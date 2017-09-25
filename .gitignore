@@ -1,0 +1,5 @@
+composer.lock
+vendor/slim
+vendor/phpmailer
+vendor/rain
+vendor/composer
