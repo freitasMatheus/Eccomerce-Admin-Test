@@ -11,7 +11,7 @@ class Page
 {
 	private $tpl; // Objetc from TPL Class
 	private $options  = []; // Options for my class
-	private $defaults = ["data"=>[]]; // IF not sent any opt in Construct
+	private $defaults = ["data"=>[], "header"=>true, "footer"=>true]; // IF not sent any opt in Construct
 
 	/*
 	* Function Construct
@@ -34,7 +34,8 @@ class Page
 
 		$this->setData($this->options["data"]);
 
-		$this->tpl->draw("header");
+		if($this->options["header"])
+			$this->tpl->draw("header");
 
 	}
 
@@ -55,8 +56,9 @@ class Page
 	* Destroy Objetct and draw Footer
 	*/
 	public function __destruct()
-	{
-		$this->tpl->draw("footer");
+	{	
+		if($this->options["footer"])
+			$this->tpl->draw("footer");
 	}
 
 	/* Function setData
